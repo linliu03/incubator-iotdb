@@ -32,21 +32,21 @@
 
 # Overview
 
-IoTDB (Internet of Things Database) is an integrated data management engine designed for time series data, which can provide users specific services for data collection, storage and analysis. Due to its light weight structure, high performance and usable features together with its intense integration with Hadoop and Spark ecology, IoTDB meets the requirements of massive dataset storage, high-speed data input and complex data analysis in the IoT industrial field.
+IoTDB (Internet of Things Database) is an integrated data management engine designed for time series data, which can provide users specific services for data collection, storage and analysis. Due to its light weight structure, high performance and usable features together with its seamless integration with Hadoop and Spark ecology, IoTDB meets the requirements of massive dataset storage, high data thoroughput and complex analytics in the industrial IoT field.
 
 # Main Features
 
-IoTDB's features are as following:
+Main features of IoTDB are as following:
 
-1. Flexible deployment. IoTDB provides users one-click installation tool on the cloud, once-decompressed-used terminal tool and the bridge tool between cloud platform and terminal tool (Data Synchronization Tool).
-2. Low cost on hardware. IoTDB can reach a high compression ratio of disk storage
+1. Flexible deployment choice. IoTDB provides one-clickinstallation tool for users on the cloud, one-shot compression user terminal and a data synchroniztion tool that bridges the cloud and the terminal.
+2. Low cost hardware. IoTDB can reach a high compression ratio to save storage space. 
 3. Efficient directory structure. IoTDB supports efficient organization for complex time series data structure from intelligent networking devices, organization for time series data from devices of the same type, fuzzy searching strategy for massive and complex directory of time series data.
 4. High-throughput read and write. IoTDB supports millions of low-power devices' strong connection data access, high-speed data read and write for intelligent networking devices and mixed devices mentioned above.
 5. Rich query semantics. IoTDB supports time alignment for time series data across devices and sensors, computation in time series field (frequency domain transformation) and rich aggregation function support in time dimension.
-6. Easy to get start. IoTDB supports SQL-Like language, JDBC standard API and import/export tools which is easy to use.
-7. Intense integration with Open Source Ecosystem. IoTDB supports Hadoop, Spark, etc. analysis ecosystems and Grafana visualization tool.
+6. Easy to get started. IoTDB supports SQL-Like language, JDBC standard API and import/export tools which is easy to use.
+7. Seamless integration with Open Source Ecosystem. IoTDB supports Hadoop, Spark, etc. analysis ecosystems and Grafana visualization tool.
 
-For the latest information about IoTDB, please visit our [IoTDB official website](https://iotdb.apache.org/). If you encounter problems or bugs while using IoTDB, please open an issue in [jira](https://issues.apache.org/jira/projects/IOTDB/issues).
+For the latest information about IoTDB, please visit [IoTDB official website](https://iotdb.apache.org/). If you encounter any problems or identify any bugs while using IoTDB, please report an issue in [jira](https://issues.apache.org/jira/projects/IOTDB/issues).
 
 <!-- TOC -->
 
@@ -90,7 +90,7 @@ To use IoTDB, you need to have:
 
 ## Installation
 
-IoTDB provides you three installation methods, you can refer to the following suggestions, choose one of them:
+IoTDB provides three installation methods, you can refer to the following suggestions, choose one of them:
 
 * Installation from source code. If you need to modify the code yourself, you can use this method.
 * Installation from binary files. Download the binary files from the official website. This is the recommended method, in which you will get a binary released package which is out-of-the-box.(Comming Soon...)
@@ -125,7 +125,7 @@ configuration files are under "conf" folder
   * system config module (`tsfile-format.properties`, `iotdb-engine.properties`)
   * log config module (`logback.xml`).
 
-For more, see [Chapter3: Server](https://iotdb.apache.org/#/Documents/progress/chap3/sec1) and [Chapter4: Client](https://iotdb.apache.org/#/Documents/progress/chap4/sec1) in detail.
+For more information, please see [Chapter3: Server](https://iotdb.apache.org/#/Documents/progress/chap3/sec1) and [Chapter4: Client](https://iotdb.apache.org/#/Documents/progress/chap4/sec1) in detail.
 
 ## Start
 
@@ -201,14 +201,14 @@ IoTDB> SHOW STORAGE GROUP
 storage group number = 1
 ```
 
-After the storage group is set, we can use CREATE TIMESERIES to create new timeseries. When we create a timeseries, we should define its data type and the encoding scheme. We create two timeseries as follow:
+After the storage group is set, you can use CREATE TIMESERIES to create new timeseries. When we create a timeseries, we should define its data type and the encoding scheme. We create two timeseries as follow:
 
 ```
 IoTDB> CREATE TIMESERIES root.ln.wf01.wt01.status WITH DATATYPE=BOOLEAN, ENCODING=PLAIN
 IoTDB> CREATE TIMESERIES root.ln.wf01.wt01.temperature WITH DATATYPE=FLOAT, ENCODING=RLE
 ```
 
-Inorder to query the specific timeseries, we can use SHOW TIMESERIES <Path>. <Path> represent the path of the timeseries. Its default value is null, which means quering all the timeseries in the system(the same as using "SHOW TIMESERIES root"). Here are the examples:
+In order to query a specific timeseries, you can use SHOW TIMESERIES <Path>. <Path> represents the path of the timeseries. Its default value is null, which means quering all the timeseries in the system(the same as using "SHOW TIMESERIES root"). Here are the examples:
 
 1. Querying all timeseries in the system:
 
@@ -235,14 +235,14 @@ IoTDB> SHOW TIMESERIES root.ln.wf01.wt01.status
 Total timeseries number = 1
 ```
 
-Insert timeseries data is the basic operation of IoTDB, you can use ‘INSERT’ command to finish this. Before inserting you should assign the timestamp and the suffix path name:
+Insert timeseries data is a basic operation of IoTDB, you can use ‘INSERT’ command to finish this. Before inserting you should assign the timestamp and the suffix path name:
 
 ```
 IoTDB> INSERT INTO root.ln.wf01.wt01(timestamp,status) values(100,true);
 IoTDB> INSERT INTO root.ln.wf01.wt01(timestamp,status,temperature) values(200,false,20.71)
 ```
 
-The data we’ve just inserted displays like this:
+The data you've just inserted will be shown as follows:
 
 ```
 IoTDB> SELECT status FROM root.ln.wf01.wt01
@@ -255,7 +255,7 @@ IoTDB> SELECT status FROM root.ln.wf01.wt01
 Total line number = 2
 ```
 
-We can also query several timeseries data at once like this:
+You can also query several timeseries data at the same time:
 
 ```
 IoTDB> SELECT * FROM root.ln.wf01.wt01
@@ -268,7 +268,7 @@ IoTDB> SELECT * FROM root.ln.wf01.wt01
 Total line number = 2
 ```
 
-The commands to exit the Cli is:
+The commands to exit the Cli are:
 
 ```
 IoTDB> quit
@@ -276,7 +276,7 @@ or
 IoTDB> exit
 ```
 
-For more on what commands are supported by IoTDB SQL, see [Chapter 5: IoTDB SQL Documentation](https://iotdb.apache.org/#/Documents/0.10.0/chap5/sec1).
+For more information about commands supported by IoTDB SQL, please see [Chapter 5: IoTDB SQL Documentation](https://iotdb.apache.org/#/Documents/0.10.0/chap5/sec1).
 
 ### Stop IoTDB
 
